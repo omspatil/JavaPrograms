@@ -1,0 +1,185 @@
+//exception handling 01
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1828;
+
+/**
+ *
+ * @author Tectonic
+ */
+import java.util.*;
+public class ExceptionHandling {
+    public static void main(String[] args){
+       Scanner sc= new Scanner(System.in);
+       String a=sc.next();
+       try{
+           int b = Integer.parseInt(a);
+           System.out.println(b*b);
+           
+       }catch(Exception e){
+           System.out.println(e);
+           System.out.println("Entered string is no tvalid format !!");
+           
+       }
+    }
+}
+
+
+
+
+//Exceptiion Handling07
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1828;
+import java.util.*;
+/**
+ *
+ * @author Tectonic
+ */
+class InvalidCountryException extends Exception
+{
+    public String display()
+    {
+        return "User Can't Register Outside From India";
+    }
+}
+class Registration
+{
+    private String username;
+    private String usercountry;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsercountry() {
+        return usercountry;
+    }
+
+    public void setUsercountry(String usercountry) {
+        this.usercountry = usercountry;
+    }
+    
+    
+}
+public class ExceptionHandling7 
+{
+    public static void main(String args[])
+    {   String s1;
+        String s2;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Name and Country Of Birth:");
+        s1= sc.next();
+        s2=sc.next();
+        
+        try 
+        {
+            if(s2.equalsIgnoreCase("india"))
+            {
+                Registration r1 = new Registration();
+                r1.setUsername(s1);
+                r1.setUsercountry(s2);
+                System.out.println("User Registration Done Successfully \n"+"Name of The User:"+r1.getUsername());
+                
+            }
+            else
+            {
+                InvalidCountryException wrongcountry=new InvalidCountryException();
+                throw wrongcountry;
+            }
+            
+        } 
+           
+        catch (InvalidCountryException e) {
+            System.out.println(e.display());
+        }
+    
+    }
+}
+
+
+//Exception handling 02
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1828;
+
+/**
+ *
+ * @author Tectonic
+ */
+import java.util.*;
+public class ExceptonHandling1 {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int a[]=new int[4];
+        for(int i=0;i<4;i++){
+            a[i]=sc.nextInt();
+            
+        } 
+        try {
+            System.out.println("Enter index to access element:");
+            int x=sc.nextInt();
+            System.out.println(a[x]);
+        } catch (Exception e) {
+            System.out.println(e);
+            
+        }
+    }
+}
+
+
+
+//exception handling 03
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1828;
+
+import java.util.InputMismatchException;
+
+/**
+ *
+ * @author Tectonic
+ */
+
+
+public class ExceptonHandling2 {
+    static int operation(int arr[])throws ArithmeticException,NumberFormatException,InputMismatchException{
+         int sum=0;
+        for (int i=0;i<arr.length;i++){
+          sum+=arr[i];
+       }
+        return sum;
+    } 
+    
+   public static void main(String[] args){
+       int a[]=new int[args.length];
+       
+       try {
+            for (int i=0;i<args.length;i++){
+         a[i]=Integer.parseInt(args[i]);
+       }
+           int sum1=operation(a);
+             
+       } catch (Exception e) {
+           System.out.println(e);
+       }
+            
+   }    
+}
